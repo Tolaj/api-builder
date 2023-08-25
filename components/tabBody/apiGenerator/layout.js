@@ -60,8 +60,9 @@ const MyCompProfile = params => {
                             </div>
                             <div title="Save" onClick={()=>{params.setModalToggle("/admin/alumniManagement");params.setAlumniData(params.data)}} >
                  
+                               
                                 <svg className="w-6 h-6 text-green-500 hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776" />
                                 </svg>
 
                             </div>
@@ -121,43 +122,102 @@ const MyCompProfile = params => {
    
    
     if(true){
-        return <>
-        {params.data.payload.map((item,index)=>{
-            return(<>
-            <span id="badge-dismiss-dark" class="inline-flex items-center px-2 py-1 mr-2 text-xs  text-gray-800 bg-[#F0BD66] rounded">
-                {item.fieldName} - {item.dataType}
-                <button type="button" class="inline-flex items-center p-1 ml-2 text-sm text-gray-400 bg-transparent rounded-sm hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300" data-dismiss-target="#badge-dismiss-dark" aria-label="Remove">
-                    <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                    </svg>
-                    <span class="sr-only">Remove badge</span>
-                </button> 
-            </span> 
-            </>)
+        return (<div class={`grid ${"grid-rows-"+(params.data.payload.length>2?'3':params.data.payload.length<2?'1':'2')} justify-start grid-flow-col gap-y-2 py-2`}>
+        {params.data.payload.map((item, index) => {
+            return (
+                <div class="flex-shrink-0 inline-flex max-w-fit items-center px-2 py-1 mr-2 text-xs text-gray-800 bg-[#F0BD66] rounded">
+                    {item.fieldName} - {item.dataType}
+                    <button type="button" class="inline-flex items-center p-1 ml-2 text-sm text-gray-400 bg-transparent rounded-sm hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300" data-dismiss-target="#badge-dismiss-dark" aria-label="Remove">
+                        <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Remove badge</span>
+                    </button>
+                </div>
+            );
         })}
-            
-            
-        </>
+    </div>)
     }else{
         return(<>
-            <div className="flex justify-between items-center gap-2 absolute left-0 ">
-              <div className="grid grid-flow-row" >
-                  <div className="flex  ">
-                              <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 " placeholder="John" required/>
-                              <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required/>
-      
-                  </div>   
-                  <div className="flex  ">
-                              <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required/>
-                              <input type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required/>
-      
-                  </div> 
+            <div className=" absolute left-0 pt-2 ">
+              <div className="grid grid-flow-row gap-1" >
+                  {params.data.payload.map((item,index)=>{
+                    return (<div className=" flex justify-between items-center gap-2">
+                            <div className="flex gap-1">
+                            <input type="text" class="h-8 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Field Name" required/>
+                            <input type="text" class="h-8 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Data Type" required/>
+                            </div> 
+                            <div className=" ">
+                
+                                <svg className="text-red-400 hover:bg-white hover:cursor-pointer rounded-full w-5 h-5 font-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                </svg>
+
+                            </div>
+                        </div>)
+                  })}
+                    
+                
               </div>
-              <div className=" ">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="text-[#F0BD66] hover:bg-white hover:cursor-pointer rounded-full w-5 h-5 font-block" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                      </svg>
+              <div className=" float-right " title="Add Input Field">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="text-[#F0BD66] hover:bg-white hover:cursor-pointer rounded-full w-5 h-5 font-block" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </div>
+              
+            </div>
+            </>)
+    }
+      
+  }
+
+  const statusCodeCell = (params)=>{
+   
+   
+    if(true){
+        return (<div class={`grid ${"grid-rows-"+(params.data.statusCode.length>2?'3':params.data.statusCode.length<2?'1':'2')} justify-start grid-flow-col gap-y-2 py-2`}>
+        {params.data.statusCode.map((item, index) => {
+            return (
+                <div class="flex-shrink-0 inline-flex max-w-fit items-center px-2 py-1 mr-2 text-xs text-gray-800 bg-slate-300 rounded">
+                    {item.code} - {item.remark}
+                    <button type="button" class="inline-flex items-center p-1 ml-2 text-sm text-gray-400 bg-transparent rounded-sm hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-gray-300" data-dismiss-target="#badge-dismiss-dark" aria-label="Remove">
+                        <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Remove badge</span>
+                    </button>
+                </div>
+            );
+        })}
+    </div>)
+    }else{
+        return(<>
+            <div className=" absolute left-0 pt-2 ">
+              <div className="grid grid-flow-row gap-1" >
+                  {params.data.statusCode.map((item,index)=>{
+                    return (<div className=" flex justify-between items-center gap-2">
+                            <div className="flex gap-1">
+                            <input type="text" class="h-8 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Status Code" required/>
+                            <input type="text" class="h-8 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Remark" required/>
+                            </div> 
+                            <div className=" ">
+                
+                                <svg className="text-red-400 hover:bg-white hover:cursor-pointer rounded-full w-5 h-5 font-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+                                     <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                </svg>
+
+                            </div>
+                        </div>)
+                  })}
+                    
+                
               </div>
+              <div className=" float-right " title="Add Input Field">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="text-[#F0BD66] hover:bg-white hover:cursor-pointer rounded-full w-5 h-5 font-block" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </div>
+              
             </div>
             </>)
     }
@@ -181,35 +241,35 @@ const Layout = (props) => {
             "address":"/register",
             "protocol":"POST",
             "payload":[{"fieldName":"username","dataType":"string"},{"fieldName":"password","dataType":"string"},{"fieldName":"password","dataType":"string"},{"fieldName":"password","dataType":"string"},{"fieldName":"password","dataType":"string"},{"fieldName":"password","dataType":"string"},{"fieldName":"password","dataType":"string"},{"fieldName":"password","dataType":"string"},{"fieldName":"password","dataType":"string"},{"fieldName":"password","dataType":"string"},{"fieldName":"password","dataType":"string"},{"fieldName":"password","dataType":"string"},{"fieldName":"password","dataType":"string"}],
-            "statusCode":"200",
+            "statusCode":[{"code":"200","remark":"OK"},{"code":"300","remark":"user not found"}],
+            
+        },{
+            "resource":"Register User",
+            "address":"/register",
+            "protocol":"POST",
+            "payload":[{"fieldName":"username","dataType":"string"}],
+            "statusCode":[{"code":"200","remark":"OK"},{"code":"300","remark":"user not found"}],
             
         },{
             "resource":"Register User",
             "address":"/register",
             "protocol":"POST",
             "payload":[{"fieldName":"username","dataType":"string"},{"fieldName":"password","dataType":"string"}],
-            "statusCode":"200",
-            
-        },{
-            "resource":"Register User",
-            "address":"/register",
-            "protocol":"POST",
-            "payload":[{"fieldName":"username","dataType":"string"},{"fieldName":"password","dataType":"string"}],
-            "statusCode":"200",
+            "statusCode":[{"code":"200","remark":"OK"},{"code":"300","remark":"user not found"}],
             
         },{
             "resource":"Register User4",
             "address":"/register",
             "protocol":"POST",
             "payload":[{"fieldName":"username","dataType":"string"},{"fieldName":"password","dataType":"string"}],
-            "statusCode":"200",
+            "statusCode":[{"code":"200","remark":"OK"},{"code":"300","remark":"user not found"}],
             
         },{
             "resource":"Register User",
             "address":"/register",
             "protocol":"POST",
             "payload":[{"fieldName":"username","dataType":"string"},{"fieldName":"password","dataType":"string"}],
-            "statusCode":"200",
+            "statusCode":[{"code":"200","remark":"OK"},{"code":"300","remark":"user not found"}],
             
         },
     ]); // Set rowData to Array of Objects, one Object per Row
@@ -221,8 +281,8 @@ const Layout = (props) => {
         {headerName:'Resource',field: 'resource', filter: true,},
         {headerName:'Address',field: 'address', filter: true},
         {headerName:'Protocol',field: 'protocol', filter: true, width:140},
-        {headerName:'Payload',field: 'payload', filter: true,width:240,cellRenderer: payloadCell, autoHeight: true,editable: false},
-        {headerName:'Status Code',field: 'statusCode', filter: true,},
+        {headerName:'Payload',field: 'payload', filter: true,width:400,cellRenderer: payloadCell, autoHeight: true,editable: false},
+        {headerName:'Status Code',field: 'statusCode', filter: true,cellRenderer: statusCodeCell, autoHeight: true,editable: false},
         {headerName:'Action', headerComponentFramework: ButtonFilterHeaderComponent,headerComponentParams:{addEmptyRow:addEmptyRow},filter: false, cellRenderer: ActionButton,cellRendererParams: { setModalToggle: props.setModalToggle,setAlumniData:props.setAlumniData,setReloadChild:props.setReloadChild }},
 
         
@@ -280,8 +340,23 @@ const Layout = (props) => {
           };
 
           const getRowHeight = useCallback((params) => {
-           
-            return 80;
+           const rowHeight = 0
+            switch (3   ) {
+                case 0:
+                    rowHeight = params.data.payload.length*35 + 45
+                    break;
+                case 1:
+                    rowHeight = params.data.statusCode.length*35 + 45
+                    break;
+                case 2:
+                    rowHeight = Math.max(...[params.data.payload.length*35 + 45, params.data.statusCode.length*35 + 45])
+                    break;
+            
+                default:
+                    rowHeight = 45
+                    break;
+            }
+            return  rowHeight
           }, []);
 
           const containerStyle = useMemo(() => ({
