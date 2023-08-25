@@ -138,6 +138,30 @@ export default function Sidebar() {
                   </a>
                 </Link>
               </li>
+              <li className="items-center">
+                <Link legacyBehavior href="/admin/api-generator">
+                  <a
+                    href="#pablo"
+                    className={
+                      "text-lg uppercase py-3 font-medium block " +
+                      (router.pathname.indexOf("/admin/api-generator") !== -1
+                        ? "text-slate-800 hover:text-slate-900"
+                        : "text-slate-400 hover:text-slate-500")
+                    }
+                  >
+                    <i
+                      className={
+                        " mr-2 text-sm " +
+                        (router.pathname.indexOf("/admin/api-generator") !== -1
+                          ? "opacity-75"
+                          : "text-blueGray-300")
+                      }
+                    ></i>{" "}
+                    
+                    API Generator
+                  </a>
+                </Link>
+              </li>
 
             {/* Divider */}
             <hr className="my-4 md:min-w-full" />

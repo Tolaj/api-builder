@@ -10,7 +10,9 @@ export default function Navbar(props) {
     "/admin/dashboard" : "Dashboard",
 
     "/admin/alumniManagement" : "Alumni Management",
-    "/admin/settings" : "Settings"
+    "/admin/settings" : "Settings",
+    "/admin/api-generator" : "API Generator"
+
   })
  
 
@@ -111,7 +113,7 @@ export default function Navbar(props) {
       </nav>
       {/* End Navbar */}
     </>);
-     case "/admin/settings" : return(<>
+    case "/admin/settings" : return(<>
       {/* Navbar */}
       <nav className="absolute top-10 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
         <div className="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
@@ -158,6 +160,42 @@ export default function Navbar(props) {
       </nav>
       {/* End Navbar */}
     </>); 
+    case "/admin/api-generator" : return(<>
+      {/* Navbar */}
+      <nav className="absolute top-10 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
+        <div className="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
+          {/* Brand */}
+          <a
+            className={` text-black text-lg uppercase hidden ${props.sidebarToggle? "ml-0":"ml-14"} lg:inline-block font-bold `}
+            href="#pablo"
+            onClick={(e) => e.preventDefault()}
+          >
+            {
+              NavTitle[router.route]
+            
+            }
+            
+          </a>
+         
+          <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
+                  <li className="mr-2" onClick={()=>{props.setDashboardTab(0)}}>
+                      <a href="#" aria-current="page" className={`inline-block p-4 ${props.dashboardTab == 0 ? "text-white bg-[#F0BD66] active" : "text-gray-500 hover:text-gray-600 hover:bg-gray-100  " }  rounded-t-lg  dark:bg-gray-800 `}>Layout</a>
+                  </li>
+                  <li className="mr-2" onClick={()=>{props.setDashboardTab(1)}}>
+                      <a href="#" className={`inline-block p-4 rounded-t-lg   ${props.dashboardTab == 1 ? "text-white bg-[#F0BD66] active" : "text-gray-500 hover:text-gray-600 hover:bg-gray-100 " }   `}>Documentation</a>
+                  </li>
+                  <li className="mr-2" onClick={()=>{props.setDashboardTab(2)}}>
+                      <a href="#" className={`inline-block p-4 rounded-t-lg ${props.dashboardTab == 2 ? "text-white bg-[#F0BD66] active" : "text-gray-500 hover:text-gray-600 hover:bg-gray-100 " } `}>Code</a>
+                  </li>
+                 
+          </ul>
+          
+          
+        </div>
+      </nav>
+      {/* End Navbar */}
+    </>);
+    
     default : return(<>
       {/* Navbar */}
       <nav className="absolute top-10 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">

@@ -15,16 +15,17 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // Replace the URL with your API endpoint to handle login logic
-    const userLoginUrl = `${process.env.SERVER_API}api/users/login`
-    let loginForm = {email:email,password:password}
-    const response =  await axios.post(userLoginUrl, loginForm)
+    // const userLoginUrl = `${process.env.SERVER_API}api/users/login`
+    // let loginForm = {email:email,password:password}
+    // const response =  await axios.post(userLoginUrl, loginForm)
 
     // const response = {}
 
     if(email == "root@gmail.com" && password == "root"){
-      response.ok = true
+      
+      router.push('/admin/dashboard');
     }else{
-      response.ok = false
+      
     }
 
     // if (response.status == 200) {
